@@ -1,5 +1,6 @@
 
 require_relative 'driver'
+require_relative 'trip'
 
 class App 
   attr_accessor :input 
