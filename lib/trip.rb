@@ -4,7 +4,6 @@ class Trip
   attr_accessor :start, :stop, :miles, :drive_time 
 
   def initialize(start, stop, miles)
-
     @start = start
     @stop = stop 
     @miles = miles.to_f 

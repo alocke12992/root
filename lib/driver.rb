@@ -1,11 +1,18 @@
 class Driver 
-  attr_accessor :name, :trips
+  attr_accessor :name, :trips, :miles, :mph
 
-  def initialize(name, trips =[])
+  def initialize(name)
     @name = name
-    @trips = trips 
+    @miles = 0 
+    @mph = 0
+    @total_miles = 0 
   end 
 
-  def trip_data  
+  def sum_trip_data(trip)
+    
   end 
+
+  def update_driver_totals(trip)
+  end 
+  
 end 
