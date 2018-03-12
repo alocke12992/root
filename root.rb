@@ -18,6 +18,7 @@ require 'time'
     end 
     slice(input) 
     drivers_no_trips 
+    trips_no_drivers
     sum_trips(@trips)
   end 
 
@@ -48,7 +49,6 @@ require 'time'
 
   def time(x, y)
     @drive_time = (Time.parse(y) - Time.parse(x)) / 60 
-
   end 
 
   def mph(time, miles)

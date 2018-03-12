@@ -7,34 +7,36 @@ class App
   attr_accessor :input 
   def initialize(input)
     @input = input 
-    @results = []
+    @trips = []
     @drivers = Hash.new
     @output = 'output.txt' 
   end 
 
   #Opens file and reads the data
   def read_input 
-    File.open(@input).each do |l|
-      line = l.split(" ")
-      case line[0]
-        when "Driver"
-          @drivers[line[1]] = Driver.new(line[1])
-          p @drivers[line[1]]
-        when "Trip"
+    begin 
+      (@input).each do |l|
+        line = l.split(" ")
+        if line[0] == "Driver"
+          id = 1 
+          @drivers[line[1]] = Driver.new(line[1], id)
+        elsif line[0] == "Trip"
           if @drivers[line[1]]
-            driver = @drivers[line[1]]
+            name = @drivers[line[1]]
             trip = Trip.new(line[2], line[3], line[4])
-            binding.pry
             #exclude trips with with avg speed less than 4 and greater than 100
             if ( trip.avg_mph > 4) && (trip.avg_mph < 101)
               driver.driver_avg_speed(trip)
             end 
+          @trips << trip
           end  
         else 
           "error with input data"
+        end
       end
-    end
-    output  
+      output
+      return @drivers 
+    end 
   end 
 
 
