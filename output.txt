@@ -1,3 +1,3 @@
-dan: 0 miles @ 0
-alex: 0 miles @ 0
-bob: 0 miles @ 0
+Dan: 0 miles @ 0
+Alex: 0 miles @ 0
+Bob: 0 miles @ 0

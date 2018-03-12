@@ -1,6 +1,7 @@
 
 require_relative 'driver'
 require_relative 'trip'
+require 'pry'
 
 class App 
   attr_accessor :input 
@@ -14,17 +15,18 @@ class App
   #Opens file and reads the data
   def read_input 
     File.open(@input).each do |l|
-      line = l.downcase.split(" ")
+      line = l.split(" ")
       case line[0]
-        when "driver"
+        when "Driver"
           @drivers[line[1]] = Driver.new(line[1])
-          @results << @drivers 
-        when "trip"
+          p @drivers[line[1]]
+        when "Trip"
           if @drivers[line[1]]
             driver = @drivers[line[1]]
             trip = Trip.new(line[2], line[3], line[4])
+            binding.pry
             #exclude trips with with avg speed less than 4 and greater than 100
-            if ( trip.mph > 4) && (trip.mph < 101)
+            if ( trip.avg_mph > 4) && (trip.avg_mph < 101)
               driver.driver_avg_speed(trip)
             end 
           end  
@@ -43,8 +45,8 @@ class App
       @drivers.each do |key, value| 
         file.write "#{value.name}: #{value.total_miles_driven} miles @ #{value.mph}\n"
       end 
-    end  
-  end 
+    end 
+  end  
 
   #Sorts data according to challenge params (sort miles desc)
   def sort_data 

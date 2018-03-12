@@ -1,22 +1,18 @@
 require 'time'
 
 class Trip 
-  attr_accessor :start, :stop, :miles, :drive_time 
+  attr_accessor :start, :stop, :miles_driven, :drive_time 
 
-  def initialize(start, stop, miles)
+  def initialize(start, stop, miles_driven)
     @start = start
     @stop = stop 
-    @miles = miles.to_f 
+    @miles_driven = miles_driven.to_i 
     @drive_time = time(@start,@stop)
   end 
 
   #finds average speed of trip 
-  def mph
-    if @drive_time == 0 
-      return 0 
-    else 
-      return (@miles / @drive_time)
-    end 
+  def avg_mph
+    (@miles_driven / @drive_time)
   end 
 
   #calculate drive time for trip in minutes. 
