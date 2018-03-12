@@ -8,4 +8,4 @@ class Driver
 
   def trip_data  
   end 
-
+end 
