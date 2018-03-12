@@ -16,6 +16,7 @@ class Trip
       return 0 
     else 
       return (@miles / @drive_time)
+    end 
   end 
 
   #calculate drive time for trip in minutes. 
